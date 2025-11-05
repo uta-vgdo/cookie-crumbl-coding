@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://drt11m3yu56au"]
+
+[ext_resource type="Script" uid="uid://gmukv7jrw3oy" path="res://control.gd" id="1_62e2m"]
+[ext_resource type="Texture2D" uid="uid://cp57qi26odxaf" path="res://Cookie_JE2_BE2.png" id="2_62e2m"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("cookie_button", "score_label", "grandma_timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62e2m")
+cookie_button = NodePath("TextureButton")
+score_label = NodePath("Label")
+grandma_timer = NodePath("GrandmaTimer")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -121.0
+offset_right = 120.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_62e2m")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_right = 39.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Cookies: 0"
+
+[node name="GrandmaButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Grandma - $10"
+
+[node name="GrandmaTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="GrandmaButton" to="." method="_on_grandma_button_pressed"]
+[connection signal="timeout" from="GrandmaTimer" to="." method="_on_grandma_timer_timeout"]
